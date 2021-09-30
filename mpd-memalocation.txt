@@ -1,0 +1,7 @@
+Add these lines to this file in this directory
+
+/etc/security/limits.conf
+
+
+*				soft     memlock 			67108864
+*				hard     memlock 	        67108864
