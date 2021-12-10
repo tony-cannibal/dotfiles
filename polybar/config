@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #073642
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -43,8 +43,8 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 0
-border-color = #00000000
+border-size = 1
+border-color = ${colors.main}
 
 padding-left = 0
 padding-right = 2
@@ -114,7 +114,7 @@ type = internal/bspwm
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.main}
+;label-focused-underline= ${colors.main}
 label-focused-padding = 1
 label-focused-foreground = ${colors.foreground}
 
