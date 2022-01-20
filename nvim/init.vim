@@ -1,6 +1,3 @@
-" set leader key
-let g:mapleader = "\<Space>"
-
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
@@ -42,20 +39,59 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'lifepillar/vim-solarized8'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'glepnir/dashboard-nvim'
+    Plug 'liuchengxu/vim-clap'
 
 call plug#end()
 
 colorscheme solarized8
+
 highlight Normal guibg=none
 
-" air-line
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-
 lua require'plug-colorizer'
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+
+
+let g:dashboard_custom_header = [
+  \'               ▄▄██████████▄▄             ',
+  \'               ▀▀▀   ██   ▀▀▀             ',
+  \'       ▄██▄   ▄▄████████████▄▄   ▄██▄     ',
+  \'     ▄███▀  ▄████▀▀▀    ▀▀▀████▄  ▀███▄   ',
+  \'    ████▄ ▄███▀              ▀███▄ ▄████  ',
+  \'   ███▀█████▀▄████▄      ▄████▄▀█████▀███ ',
+  \'   ██▀  ███▀ ██████      ██████ ▀███  ▀██ ',
+  \'    ▀  ▄██▀  ▀████▀  ▄▄  ▀████▀  ▀██▄  ▀  ',
+  \'       ███           ▀▀           ███     ',
+  \'       ██████████████████████████████     ',
+  \'   ▄█  ▀██  ███   ██    ██   ███  ██▀  █▄ ',
+  \'   ███  ███ ███   ██    ██   ███▄███  ███ ',
+  \'   ▀██▄████████   ██    ██   ████████▄██▀ ',
+  \'    ▀███▀ ▀████   ██    ██   ████▀ ▀███▀  ',
+  \'     ▀███▄  ▀███████    ███████▀  ▄███▀   ',
+  \'       ▀███    ▀▀██████████▀▀▀   ███▀     ',
+  \'         ▀    ▄▄▄    ██    ▄▄▄    ▀       ',
+  \'               ▀████████████▀             ',
+\]
+
+" Default value is clap
+let g:dashboard_default_executive ='clap'
+
+" set leader key
+let g:mapleader = "\<Space>"
+
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 
 " Better nav for omnicomplete
 inoremap <expr> <c-j> ("\<C-n>")
@@ -101,3 +137,6 @@ nnoremap <C-l> <C-w>l
 
 nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
+
+nnoremap <C-t> :ColorizerAttachToBuffer<CR>
+
