@@ -4,14 +4,21 @@
 
 # terminal emulator
 super + Return
-	alacritty
+  alacritty
 
 # program launcher
 super + @space
-	rofi -config ~/.config/rofi/rofi.css -show drun
+	rofi -show drun
 
-super + x
-	rofi -config ~/.config/rofi/power.css -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu
+
+super + x 
+	$HOME/.bin/dmenu-power.sh
+
+super + KP_Add 
+	$HOME/.config/lemonbar/lv-up.sh
+
+super + KP_Subtract 
+	$HOME/.config/lemonbar/lv-down.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -58,8 +65,8 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+super + {_,shift + }{h,j,k,l}   
+  bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
@@ -84,7 +91,7 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,alt + }{1-9,0}
+super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
@@ -92,8 +99,8 @@ super + {_,alt + }{1-9,0}
 #
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+#super + ctrl + {h,j,k,l}
+#	bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
@@ -120,13 +127,10 @@ super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
-super + shift + {Left,Down,Up,Right}
+super + bracket{Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Rotate tree
-super + alt + {Right,Left}
+super + ctrl + {l,h}
     bspc node @/ -C {forward,backward}
 
-# Send to desktop
-super + shift + {1-9,0}
-    bspc node -d '^{1-9,10}' --follow
